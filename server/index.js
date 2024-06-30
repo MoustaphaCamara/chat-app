@@ -20,6 +20,18 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`User logged in as ${socket.id}.`);
 
+  // Room events
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    console.log(`User ${socket.id} join the room ${data}`);
+  });
+
+  // chatbox events
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+
+  // Log off
   socket.on("disconnect", () => {
     console.log(`User ${socket.id} logged out.`);
   })
