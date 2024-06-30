@@ -1,6 +1,5 @@
 interface ButtonProps {
   content: string;
-  style?: string;
   icon?: string;
   onClick?: () => void;
 }

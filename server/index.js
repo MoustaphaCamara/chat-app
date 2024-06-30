@@ -26,6 +26,11 @@ io.on("connection", (socket) => {
     console.log(`User ${socket.id} join the room ${data}`);
   });
 
+  // chatbox events
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+
   // Log off
   socket.on("disconnect", () => {
     console.log(`User ${socket.id} logged out.`);
