@@ -2,7 +2,12 @@ import * as io from "socket.io-client";
 import { useState } from "react";
 import ChatBox from "./components/ChatBox.tsx";
 import InputText from "./components/InputText.tsx";
-import Button from "./components/Button.tsx";
+import ChatButton from "./components/Button.tsx";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import Button from '@mui/material/Button';
 
 const socket = io.connect("http://localhost:8000");
 
@@ -38,7 +43,10 @@ function App() {
                 onChange={(e) => setRoom(e.target.value)}
               />
 
-              <Button content="Rejoindre la salle" onClick={joinRoom} />
+              <Button variant="outlined">Hello world</Button>
+              <Button variant="contained">Hello world</Button>
+              <Button variant="text">Hello world</Button>
+              <ChatButton content="Rejoindre la salle" onClick={joinRoom} />
             </div>
           </div>
         )}
